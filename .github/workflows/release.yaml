@@ -29,4 +29,4 @@ jobs:
           export_default_credentials: true
           
     - run: |-
-        gcloud pubsub topics publish notifications. --message "${{ github.event.pull_request.user.login }} is requesting access to GCE VM"
+        gcloud pubsub topics publish notifications. --message "${{ github.event.pull_request.user.login }} requested access to GCE VM"
