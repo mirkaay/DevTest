@@ -16,6 +16,10 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+      
+    - name: Get current date
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
         
     - name: Set up gcloud Cloud SDK environment
       env:
@@ -29,4 +33,4 @@ jobs:
           export_default_credentials: true
           
     - run: |-
-        gcloud pubsub topics publish notifications. --message "${{ github.event.pull_request.user.login }} requested access to GCE VM" --attribute="requestor=${{ github.event.pull_request.user.login }},email=${{ github.event.pull_request.user.login }}@users.noreply.github.com"
+        gcloud pubsub topics publish notifications. --message "${{ github.event.pull_request.user.login }} requested access to GCE VM" --attribute="requestor=${{ github.event.pull_request.user.login }},email=${{ github.event.pull_request.user.login }}@sourcedgroup.com,time=${{ steps.date.outputs.date }}"
