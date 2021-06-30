@@ -1,1 +1,1 @@
-misbah.....mir
+misbah
