@@ -33,4 +33,4 @@ jobs:
           export_default_credentials: true
           
     - run: |-
-        gcloud pubsub topics publish notifications. --message "${{ github.event.pull_request.user.login }} requests access to GCE VM" --attribute="requestor=${{ github.event.pull_request.user.login }},email=${{ github.event.pull_request.user.login }}@sourcedgroup.com, requested_components="hotels", date=${{ steps.date.outputs.date }}"
+        gcloud pubsub topics publish notifications. --message "${{ github.event.pull_request.user.login }} requests access to GCE VM" --attribute="requestor=${{ github.event.pull_request.user.login }},email=${{ github.event.pull_request.user.login }}@sourcedgroup.com, requested_components="hotel_bopper", date=${{ steps.date.outputs.date }}"
