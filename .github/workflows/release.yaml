@@ -19,8 +19,7 @@ jobs:
       
     - name: Get current date
       id: date
-      # run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H:%M:%S')"
-      run: echo "::set-output name=date::$(date -d '+ 5 minutes'  '+%FT%T.000Z')"
+      run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H:%M:%S')"
         
     - name: Set up gcloud Cloud SDK environment
       env:
@@ -34,5 +33,6 @@ jobs:
           export_default_credentials: true
           
     - run: |-
-        gcloud pubsub topics publish notifications. --message "${{ github.event.pull_request.user.login }} requests access to GCE VM" --attribute="requestor=${{ github.event.pull_request.user.login }},email=${{ github.event.pull_request.user.login }}@sourcedgroup.com, requested_components=hotel_bopper, date=${{ steps.date.outputs.date }}"
-        gcloud projects add-iam-policy-binding golang-misbah --member='user:mir.misbahuddin@sourcedgroup.com' --role='projects/golang-misbah/roles/hotel_bopper' --condition='expression=request.time < timestamp("'$TIME'"),title=expires_end_of_2021,description=Expires at midnight on 2021-12-31'
+        gcloud pubsub topics publish notifications. --message "${{ github.event.pull_request.user.login }} requests access to GCE VM" --attribute="requestor=${{ github.event.pull_request.user.login }},email=${{ github.event.pull_request.user.login }}@sourcedgroup.com, requested_components=hotel_bopper"
+        # gcloud pubsub topics publish notifications. --message "${{ github.event.pull_request.user.login }} requests access to GCE VM" --attribute="requestor=${{ github.event.pull_request.user.login }},email=${{ github.event.pull_request.user.login }}@sourcedgroup.com, requested_components=hotel_bopper, date=${{ steps.date.outputs.date }}"
+      
